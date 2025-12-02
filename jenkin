@@ -151,3 +151,49 @@ Now we see all the build has  success if it appears in green color
 It provide the page with out project name which is highlighted.
 After clicking on our project we can see output.
 
+__________________________
+build peridicocally:H/15 * * * *
+
+pipeline
+{
+    agent any
+    tools
+    {
+        maven 'MAVEN-HOME'
+    }
+    stages
+    {
+        stage('Clean workspace & Clone repo')
+        {
+            steps
+            {
+                deleteDir()
+                bat 'git clone https://github.com/GurnulaPoojitha/week8.git'
+                bat 'mvn clean -f week8/pom.xml'
+            }
+        }
+        stage('Install')
+        {
+            steps
+            {
+                bat "mvn install -f week8/pom.xml"
+            }
+        }
+        stage('Test')
+        {
+            steps
+            {
+                bat "mvn test -f week8/pom.xml"
+            }
+        }
+        stage('Package')
+        {
+            steps
+            {
+                bat "mvn package -f week8/pom.xml"
+            }
+        }
+    }
+    
+}
+
