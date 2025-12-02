@@ -197,3 +197,6 @@ pipeline
     
 }
 
+_____________________________________________________________________________
+ngrok config add-authtoken <your_token>  
+ngork http 8080
