@@ -1,0 +1,18 @@
+open powershell as administrtor
+minikube version
+minikube start --driver=docker
+minikube start --driver=hyprev
+minikube kubectl -- get pods -A
+kubectl create deployment mynginx --image=nginx
+kubectl set image deployment/myngnix nginx=nginx:latest
+kubectl get deployments
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+kubectl scale deployment mynginx --replicas=4
+kubectl get service myngnix
+kubectl port-forward svc/mynginx 8081:80
+http://localhost:8081
+kubectl delete deployment mynginx
+kubectl delete service mynginx
+minikube stop
+minikube delete
+
