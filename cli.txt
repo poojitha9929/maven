@@ -1,0 +1,17 @@
+docker --version
+docker pull ubuntu:latest
+docker run -it -p 9090:80 --name myubuntu1 ubuntu:latest
+ apt update
+ls
+cd usr
+ls
+cd share
+ls
+apt install nginx -y
+cd nginx
+cd html
+ls
+nano index.html
+ctl+x
+nginx
+http://localhost:9090
