@@ -15,3 +15,31 @@ nano index.html
 ctl+x
 nginx
 http://localhost:9090
+________________________________________________
+image creation using docker commit
+docker run -it -p 9091:80 --name ubuntu-cont ubuntu:latest
+apt update
+exit
+docker commit ubuntu-cont img-commit-1
+docker images
+docker run -it img-commit-1
+git --version
+exit
+docker tag img-commit-1 gurnulapoojitha/img-commit-1
+docker push gurnulapoojitha/img-commit-1
+docker images
+
+image cretion using Dockerfile
+mkdir image-creation
+cd image-creation
+notepad Dockerfile
+
+FROM nginx:latest
+CMD ["nginx", "-g", "daemon off;"]
+
+ren Dockerfile.txt Dockerfile
+docker build -t img-dockerfile-1 .
+docker run -it img-dockerfile-1
+docker tag img-dockerfile-1 gurnulapoojitha/img-dockerfile-1
+docker push gurnulapoojitha/img-dockerfile-1
+docker images
